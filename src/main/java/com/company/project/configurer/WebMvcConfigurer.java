@@ -31,9 +31,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 /**
@@ -102,6 +100,12 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         //registry.addMapping("/**");
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+                .allowCredentials(true)
+                .allowedHeaders("*")
+                .maxAge(3600);
     }
 
     //添加拦截器
@@ -192,5 +196,9 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         }
 
         return ip;
+    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 }

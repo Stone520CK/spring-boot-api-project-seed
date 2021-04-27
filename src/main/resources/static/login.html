@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>系统登录</title>
+</head>
+<body class="login_bg">
+<div id="parent">
+    <section class="loginBox">
+        <header class="loginHeader" style="text-align:center; ">
+            <h1>小型进销存系统</h1>
+        </header>
+        <section class="loginCont">
+            <form class="loginForm" action="/user/login" method="post" >
+                <div  style="text-align:center; ">
+                    <label for="user">用户名：</label>
+                    <input id="user" type="text" name="userName" placeholder="请输入用户名"/>
+                </div>
+                <div  style="text-align:center; " >
+                    <label for="mima">密码：</label>
+                    <input id="mima" type="text" name="passWord" placeholder="请输入密码"/>
+                </div>
+                <div style="text-align:center; ">
+                    <input type="submit" value="登录" />
+                    <input type="reset" value="重置"/>
+                </div>
+            </form>
+        </section>
+    </section>
+</div>
+</body>
+</html>
